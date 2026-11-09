@@ -1,5 +1,6 @@
 package com.bitchat.android.sard
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -38,7 +39,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
-private val ROJO = Color(0xFFC62828)
+/** La paleta de SARD (diseno/tokens.json) según el tema del sistema. */
+@Composable
+private fun colores() = if (isSystemInDarkTheme()) SardColores.Oscuro else SardColores.Claro
+
+/** Color de una prioridad, el mismo que en el tablero. Va siempre con su texto (P1…P4). */
+@Composable
+private fun colorPrioridad(prioridad: String): Color = with(colores()) {
+    when (prioridad) { "P1" -> p1; "P2" -> p2; "P3" -> p3; else -> p4 }
+}
 
 private val NOMBRE_TIPO = mapOf(
     "ATRAP" to "Atrapados", "MEDIC" to "Médica", "FUEGO" to "Incendio",
@@ -53,7 +62,7 @@ fun SardBoton(modifier: Modifier = Modifier) {
     Button(
         onClick = { abierta = true },
         modifier = modifier,
-        colors = ButtonDefaults.buttonColors(containerColor = ROJO, contentColor = Color.White),
+        colors = ButtonDefaults.buttonColors(containerColor = colores().p1, contentColor = Color.White),
     ) { Text("SOS", fontWeight = FontWeight.Bold) }
 
     if (abierta) {
@@ -122,7 +131,7 @@ private fun Formulario() {
     Text(
         "Prioridad: $prioridad" + (palabra?.let { " (palabra crítica «$it»)" } ?: ""),
         fontWeight = FontWeight.Bold,
-        color = if (prioridad == "P1" || prioridad == "P2") ROJO else MaterialTheme.colorScheme.onSurface,
+        color = colorPrioridad(prioridad),
     )
 
     Button(
@@ -134,7 +143,7 @@ private fun Formulario() {
             texto = ""; atrapados = false; heridos = false; vulnerables = false; personas = 1; tipo = "OTRO"
         },
         modifier = Modifier.fillMaxWidth(),
-        colors = ButtonDefaults.buttonColors(containerColor = ROJO, contentColor = Color.White),
+        colors = ButtonDefaults.buttonColors(containerColor = colores().p1, contentColor = Color.White),
     ) { Text("Enviar reporte") }
 
     enviado?.let { Text(it, style = MaterialTheme.typography.bodySmall, fontFamily = FontFamily.Monospace) }
@@ -195,7 +204,7 @@ private fun AjustePasarela() {
     val ajenos = reportes.count { !it.propio }
     val entregados = reportes.count { it.estado == Estado.ENTREGADO }
     Text("Reportes en este celular: ${reportes.size} ($ajenos de otros) · entregados: $entregados", style = MaterialTheme.typography.bodySmall)
-    error?.let { Text(it, color = ROJO, style = MaterialTheme.typography.bodySmall) }
+    error?.let { Text(it, color = colores().destructive, style = MaterialTheme.typography.bodySmall) }
 }
 
 @Composable

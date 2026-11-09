@@ -1,0 +1,85 @@
+// Generado por diseno/generar.mjs desde diseno/tokens.json. No editar a mano.
+package com.bitchat.android.sard
+
+import androidx.compose.ui.graphics.Color
+
+/** Colores de SARD, los mismos del tablero. El color se reserva para el estado. */
+object SardColores {
+    class Paleta(
+        val background: Color,
+        val foreground: Color,
+        val card: Color,
+        val primary: Color,
+        val primaryForeground: Color,
+        val muted: Color,
+        val mutedForeground: Color,
+        val border: Color,
+        val destructive: Color,
+        val p1: Color,
+        val p1Surface: Color,
+        val p2: Color,
+        val p2Surface: Color,
+        val p3: Color,
+        val p3Surface: Color,
+        val p4: Color,
+        val p4Surface: Color,
+        val revisar: Color,
+        val revisarSurface: Color,
+        val ok: Color,
+        val okSurface: Color,
+        val vencido: Color,
+        val vencidoSurface: Color,
+    )
+
+    val Claro = Paleta(
+        background = Color(0xFFF6F7F8),
+        foreground = Color(0xFF13161A),
+        card = Color(0xFFFFFFFF),
+        primary = Color(0xFF1C2024),
+        primaryForeground = Color(0xFFF8F8F8),
+        muted = Color(0xFFEAEBED),
+        mutedForeground = Color(0xFF595E63),
+        border = Color(0xFFD5D8DA),
+        destructive = Color(0xFFCC2827),
+        p1 = Color(0xFFCC2827),
+        p1Surface = Color(0xFFFFE3DF),
+        p2 = Color(0xFFC75E00),
+        p2Surface = Color(0xFFFFE9D4),
+        p3 = Color(0xFF977E0D),
+        p3Surface = Color(0xFFF8EFCD),
+        p4 = Color(0xFF516C84),
+        p4Surface = Color(0xFFE3ECF5),
+        revisar = Color(0xFF8C399E),
+        revisarSurface = Color(0xFFF8E8FB),
+        ok = Color(0xFF0B7643),
+        okSurface = Color(0xFFDDF6E4),
+        vencido = Color(0xFF69737D),
+        vencidoSurface = Color(0xFFE5E8EC),
+    )
+
+    val Oscuro = Paleta(
+        background = Color(0xFF0C0F11),
+        foreground = Color(0xFFE5E8EB),
+        card = Color(0xFF131518),
+        primary = Color(0xFFE2E5E8),
+        primaryForeground = Color(0xFF101214),
+        muted = Color(0xFF1C1E21),
+        mutedForeground = Color(0xFF91969B),
+        border = Color(0x17FFFFFF),
+        destructive = Color(0xFFEF6661),
+        p1 = Color(0xFFEF6661),
+        p1Surface = Color(0xFF4B1D1B),
+        p2 = Color(0xFFF2994E),
+        p2Surface = Color(0xFF47280E),
+        p3 = Color(0xFFE3CA69),
+        p3Surface = Color(0xFF38300F),
+        p4 = Color(0xFF90A8BD),
+        p4Surface = Color(0xFF212A32),
+        revisar = Color(0xFFD28CE1),
+        revisarSurface = Color(0xFF38213E),
+        ok = Color(0xFF66C189),
+        okSurface = Color(0xFF12301E),
+        vencido = Color(0xFF7D8792),
+        vencidoSurface = Color(0xFF202429),
+    )
+}
